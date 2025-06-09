@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+}
+.btn{
+    display:flex;
+    width: 180px;
+    justify-content: space-between;
+}
+button{
+    width: 80px;
+}
+#NomeT{
+width: 137px;
+}
+#Desc{
+
+}
+#DataI{
+
+}
+#DataF{
+
+}

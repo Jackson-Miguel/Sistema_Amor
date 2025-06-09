@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Gerenciador de tarefas</title>
 </head>
 <body>
-    
+    <h1>Gerenciador de tarefas</h1>
+    <div class="formu">
+        <form action="">
+            <label for="Nome">Nome da Tarefa: <input type="text" id="NomeT"></label><br><br>
+            <label for="DataI">Data Inicial: <input type="text" id="DataI"></label><br><br>
+            <label for="DataF">Data Final: <input type="text" id="DataF"></label><br><br>
+            <label for="Desc">Descrição:</label><br>
+            <textarea id="Desc" name="opiniao" rows="3" cols="30" placeholder="Escreva aqui..."></textarea>
+            <div class="btn">
+            <button type="submit">Salvar</button>
+            <button type="reset">Limpar</button>
+        </div>
+        </form>
+    </div>
 </body>
 </html>

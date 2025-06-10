@@ -6,7 +6,7 @@
 h1{
     text-align: center;
 }
-.btn{
+#btn{
     display:flex;
     width: 180px;
     justify-content: space-between;
@@ -15,14 +15,8 @@ button{
     width: 80px;
 }
 #NomeT{
-width: 137px;
+    width: 137px;
 }
-#Desc{
-
-}
-#DataI{
-
-}
-#DataF{
-
+.formu{
+    justify-self: center;
 }

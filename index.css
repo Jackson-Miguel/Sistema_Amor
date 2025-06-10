@@ -12,11 +12,38 @@ h1{
     justify-content: space-between;
 }
 button{
+    background-color: #4CABA6;
+    color: #F2CDAC;
     width: 80px;
 }
 #NomeT{
     width: 137px;
 }
-.formu{
+#Desc{
+    background-color: #4C4A59;
+    color: #F2CDAC;
+}
+input{
+    border-color: #F2CDAC;
+    background-color: #4C4A59;
+    color: #F2CDAC;
+}
+input::placeholder, textarea::placeholder{
+    color: #F2CDAC;
+}
+textarea{
+    border-color:#F2CDAC;
+}
+.base{
+    width: 350px;
+    background-color: #4C4A59;
+    color: #F2CDAC;
+    justify-items: center;
     justify-self: center;
+}
+#saida{
+    width: 242px;
+}
+.formu{
+    justify-items: center;
 }

@@ -11,20 +11,23 @@
 </head>
 <body>
     <h1>Gerenciador de tarefas</h1>
-    <div class="formu">
-        <form id="Formulario">
-            <label for="Nome">Nome da Tarefa: <input type="text" id="NomeT" autocomplete="off"></label><br><br>
+    <div class="base">
+     <div class="formu">
+        <form id="Formulario"><br>
+            <label for="Nome">Nome da Tarefa: <input type="text" id="NomeT" autocomplete="off" placeholder="Nome da Tarefa"></label><br><br>
             <label for="DataI">Data Inicial: <input type="date" id="DataI"></label><br><br>
             <label for="DataF">Data Final: <input type="date" id="DataF"></label><br><br>
             <label for="Desc">Descrição:</label><br>
-            <textarea id="Desc" name="Desc" rows="3" cols="30" placeholder="Escreva aqui..."></textarea>
+            <textarea id="Desc" name="Desc" rows="3" cols="31" placeholder="Escreva aqui..."></textarea>
         <div id="btn">
             <button type="submit" onclick="sa(event)" id="Salvar">Salvar</button>
             <button type="reset">Limpar</button>
         </div>
         </form>
+        <br>
+            <div id="saida"></div>
+     </div>
     </div>
-    <div id="saida"></div>
     <script src="index.js" type="text/javascript"></script>
 </body>
 </html>

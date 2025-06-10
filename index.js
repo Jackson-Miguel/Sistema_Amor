@@ -35,28 +35,76 @@ function sa(event) {
   document.getElementById("DataI").value = "";
   document.getElementById("DataF").value = "";
   document.getElementById("Desc").value = "";
+
 }
 
+let Ntarefa = 1;
 db.ref("Tarefas").on("value", (snapshot) => {
-    let Ntarefa = 1;
+  document.getElementById("saida").innerHTML = "";
+  Ntarefa = 1;
+  
   snapshot.forEach((child) => {
+    const chave = child.key;
     const tarefa = child.val();
+
     const btn = document.createElement("button");
     btn.textContent = `Tarefa${Ntarefa}`;
     btn.id = `Tarefa${Ntarefa}`;
     document.getElementById("saida").appendChild(btn);
+
+
     Ntarefa++;
+    
     btn.addEventListener('click', function(){
+      if(!document.getElementById("Mod") || !document.getElementById("Ex")){
         const Modi = document.createElement("button");
+        const Ex = document.createElement("button");
 
         Modi.textContent = "Modificar";
+        Ex.textContent = "Excluir";
+
+        Modi.id = "Mod";
+        Ex.id = "Ex";
+
+        document.getElementById("btn").appendChild(Ex);
         document.getElementById("btn").appendChild(Modi);
         document.getElementById("btn").style.width = "260px";
-
+      }
         document.getElementById("NomeT").value = tarefa.nome;
         document.getElementById("DataI").value = tarefa.dataI;
         document.getElementById("DataF").value = tarefa.dataF;
         document.getElementById("Desc").value = tarefa.desc;
+
+        document.getElementById("Mod").addEventListener('click', function(event){
+          event.preventDefault();
+          
+          const nome = document.getElementById("NomeT").value;
+          const dataI = document.getElementById("DataI").value;
+          const dataF = document.getElementById("DataF").value;
+          const desc = document.getElementById("Desc").value;
+
+          db.ref("Tarefas/" + chave).update({
+            nome: nome,
+            dataI: dataI,
+            dataF: dataF,
+            desc: desc
+          });
+          
+          document.getElementById("NomeT").value = "";
+          document.getElementById("DataI").value = "";
+          document.getElementById("DataF").value = "";
+          document.getElementById("Desc").value = "";
+        });
+
+        document.getElementById("Ex").addEventListener('click', function(event){
+          event.preventDefault();
+          db.ref("Tarefas/" + chave).remove();
+
+          document.getElementById("NomeT").value = "";
+          document.getElementById("DataI").value = "";
+          document.getElementById("DataF").value = "";
+          document.getElementById("Desc").value = "";
+        });
     });
   });
 });

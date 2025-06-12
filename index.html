@@ -6,27 +6,36 @@
     <link rel="stylesheet" href="index.css">
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').then(() => 
+            console.log('Service Worker registrado!'));
+        }
+</script>
+
 
     <title>Gerenciador de tarefas</title>
 </head>
 <body>
     <h1>Gerenciador de tarefas</h1>
     <div class="base">
-     <div class="formu">
-        <form id="Formulario"><br>
-            <label for="Nome">Nome da Tarefa: <input type="text" id="NomeT" autocomplete="off" placeholder="Nome da Tarefa"></label><br><br>
-            <label for="DataI">Data Inicial: <input type="date" id="DataI"></label><br><br>
-            <label for="DataF">Data Final: <input type="date" id="DataF"></label><br><br>
-            <label for="Desc">Descrição:</label><br>
-            <textarea id="Desc" name="Desc" rows="3" cols="31" placeholder="Escreva aqui..."></textarea>
+        <div class="formu">
+            <form id="Formulario"><br>
+                <label for="Nome">Nome da Tarefa: <input type="text" id="NomeT" autocomplete="off" placeholder="Nome da Tarefa"></label><br><br>
+                <label for="DataI">Data Inicial: <input type="date" id="DataI"></label><br><br>
+                <label for="DataF">Data Final: <input type="date" id="DataF"></label><br><br>
+                <label for="Desc">Descrição:</label><br>
+                <textarea id="Desc" name="Desc" rows="3" cols="31" placeholder="Escreva aqui..."></textarea>
+            </form>
+        </div><br>
         <div id="btn">
             <button type="submit" onclick="sa(event)" id="Salvar">Salvar</button>
             <button type="reset">Limpar</button>
+            <button id="Ex">Excluir</button>
+            <button id="Mod">Atualizar</button>
         </div>
-        </form>
         <br>
             <div id="saida"></div>
-     </div>
     </div>
     <script src="index.js" type="text/javascript"></script>
 </body>

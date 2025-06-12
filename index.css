@@ -6,22 +6,10 @@
 h1{
     text-align: center;
 }
-#btn{
-    display:flex;
-    width: 180px;
-    justify-content: space-between;
-}
 button{
     background-color: #4CABA6;
     color: #F2CDAC;
     width: 80px;
-}
-#NomeT{
-    width: 137px;
-}
-#Desc{
-    background-color: #4C4A59;
-    color: #F2CDAC;
 }
 input{
     border-color: #F2CDAC;
@@ -34,16 +22,34 @@ input::placeholder, textarea::placeholder{
 textarea{
     border-color:#F2CDAC;
 }
+hr{
+    width: 350px;
+}
+.formu{
+    justify-self: center;
+}
 .base{
+    border: 1px solid;
     width: 350px;
     background-color: #4C4A59;
     color: #F2CDAC;
-    justify-items: center;
     justify-self: center;
+    justify-items: center;
+}
+#btn{
+    display:flex;
+    width: 340px;
+    justify-content: space-between;
+}
+#NomeT{
+    width: 137px;
+}
+#Desc{
+    background-color: #4C4A59;
+    color: #F2CDAC;
 }
 #saida{
-    width: 242px;
-}
-.formu{
-    justify-items: center;
+    width: 340px;
+    display: flex;
+    gap: 6px;
 }

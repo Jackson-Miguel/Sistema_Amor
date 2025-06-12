@@ -46,30 +46,15 @@ db.ref("Tarefas").on("value", (snapshot) => {
   snapshot.forEach((child) => {
     const chave = child.key;
     const tarefa = child.val();
-
     const btn = document.createElement("button");
-    btn.textContent = `Tarefa${Ntarefa}`;
-    btn.id = `Tarefa${Ntarefa}`;
+    btn.textContent = tarefa.nome;
+    btn.id = `Tarefa${chave}`;
     document.getElementById("saida").appendChild(btn);
-
 
     Ntarefa++;
     
     btn.addEventListener('click', function(){
-      if(!document.getElementById("Mod") || !document.getElementById("Ex")){
-        const Modi = document.createElement("button");
-        const Ex = document.createElement("button");
 
-        Modi.textContent = "Modificar";
-        Ex.textContent = "Excluir";
-
-        Modi.id = "Mod";
-        Ex.id = "Ex";
-
-        document.getElementById("btn").appendChild(Ex);
-        document.getElementById("btn").appendChild(Modi);
-        document.getElementById("btn").style.width = "260px";
-      }
         document.getElementById("NomeT").value = tarefa.nome;
         document.getElementById("DataI").value = tarefa.dataI;
         document.getElementById("DataF").value = tarefa.dataF;
@@ -98,7 +83,9 @@ db.ref("Tarefas").on("value", (snapshot) => {
 
         document.getElementById("Ex").addEventListener('click', function(event){
           event.preventDefault();
-          db.ref("Tarefas/" + chave).remove();
+          db.ref("Tarefas/" + chave).remove().then(() => {
+            document.getElementById(`Tarefa${chave}`).remove();
+          });
 
           document.getElementById("NomeT").value = "";
           document.getElementById("DataI").value = "";

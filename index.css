@@ -10,6 +10,7 @@ button{
     background-color: #4CABA6;
     color: #F2CDAC;
     width: 80px;
+    border-radius: 5px;
 }
 input{
     border-color: #F2CDAC;
@@ -40,6 +41,7 @@ hr{
     display:flex;
     width: 340px;
     justify-content: space-between;
+
 }
 #NomeT{
     width: 137px;

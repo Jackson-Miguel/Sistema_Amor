@@ -32,7 +32,6 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Interceptando requisições para servir do cache
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {

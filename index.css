@@ -3,14 +3,24 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    background-color: #4C4A59;
+    color: #F2CDAC;
+}
 h1{
     text-align: center;
+}
+hr{
+    margin-top: -10px;
+    background-color:#F2CDAC;
+    color: #F2CDAC;
 }
 button{
     background-color: #4CABA6;
     color: #F2CDAC;
     width: 80px;
     border-radius: 5px;
+    border-color: #F2CDAC;
 }
 input{
     border-color: #F2CDAC;
@@ -36,10 +46,12 @@ hr{
     color: #F2CDAC;
     justify-self: center;
     justify-items: center;
+    height: 290px;
 }
 #btn{
     display:flex;
     width: 340px;
+    margin-top: -10px;
     justify-content: space-between;
 
 }

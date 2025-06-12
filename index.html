@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <link rel="icon" href="data:,">
+    <link rel="icon" type="image/x-icon" href="img/img.png">
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script>
@@ -13,7 +13,6 @@
             console.log('Service Worker registrado!'));
         }
 </script>
-
     <title>Gerenciador de tarefas</title>
 </head>
 <body>
@@ -27,7 +26,7 @@
                 <label for="Desc">Descrição:</label><br>
                 <textarea id="Desc" name="Desc" rows="3" cols="31" placeholder="Escreva aqui..."></textarea>
             </form>
-        </div><br>
+        </div><br><hr><br>
         <div id="btn">
             <button type="submit" onclick="sa(event)" id="Salvar">Salvar</button>
             <button type="reset">Limpar</button>

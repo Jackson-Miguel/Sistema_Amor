@@ -1,4 +1,3 @@
-
 const firebaseConfig = {
   apiKey: "AIzaSyCQoVkXqn5hcaok7KfztHaO9IcsnIIKPKw",
   authDomain: "sistema-5e7d1.firebaseapp.com",
@@ -9,6 +8,7 @@ const firebaseConfig = {
   appId: "1:822894926025:web:567b92b5453f7b71c11518",
   measurementId: "G-HSVY15L507"
 };
+
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
@@ -62,7 +62,7 @@ db.ref("Tarefas").on("value", (snapshot) => {
 
         document.getElementById("Mod").addEventListener('click', function(event){
           event.preventDefault();
-          
+
           const nome = document.getElementById("NomeT").value;
           const dataI = document.getElementById("DataI").value;
           const dataF = document.getElementById("DataF").value;
@@ -71,7 +71,7 @@ db.ref("Tarefas").on("value", (snapshot) => {
           if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
             alert("Selecione uma tarefa ou crie uma tarefa primeiro.");
             return;
-          }else{
+          }
             db.ref("Tarefas/" + chave).update({
               nome: nome,
               dataI: dataI,
@@ -83,15 +83,21 @@ db.ref("Tarefas").on("value", (snapshot) => {
             document.getElementById("DataI").value = "";
             document.getElementById("DataF").value = "";
             document.getElementById("Desc").value = "";
-            }
+            
         });
 
         document.getElementById("Ex").addEventListener('click', function(event){
           event.preventDefault();
+          
+          const nome = document.getElementById("NomeT").value;
+          const dataI = document.getElementById("DataI").value;
+          const dataF = document.getElementById("DataF").value;
+          const desc = document.getElementById("Desc").value;
+
           if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
             alert("Selecione uma tarefa ou crie uma tarefa primeiro.");
             return;
-          }else{
+          }
             db.ref("Tarefas/" + chave).remove().then(() => {
               document.getElementById(`Tarefa${chave}`).remove();
             });
@@ -100,7 +106,7 @@ db.ref("Tarefas").on("value", (snapshot) => {
             document.getElementById("DataI").value = "";
             document.getElementById("DataF").value = "";
             document.getElementById("Desc").value = "";
-            }
+            
         });
     });
   });

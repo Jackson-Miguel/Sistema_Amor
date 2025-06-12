@@ -60,7 +60,6 @@ db.ref("Tarefas").on("value", (snapshot) => {
         document.getElementById("Desc").value = tarefa.desc;
 
 
-
         document.getElementById("Mod").addEventListener('click', function(event){
           event.preventDefault();
           

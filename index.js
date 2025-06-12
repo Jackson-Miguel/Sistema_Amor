@@ -71,19 +71,19 @@ db.ref("Tarefas").on("value", (snapshot) => {
           if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
             alert("Selecione uma tarefa ou crie uma tarefa primeiro.");
             return;
-          }
-
-          db.ref("Tarefas/" + chave).update({
-            nome: nome,
-            dataI: dataI,
-            dataF: dataF,
-            desc: desc
-          });
+          }else{
+            db.ref("Tarefas/" + chave).update({
+              nome: nome,
+              dataI: dataI,
+              dataF: dataF,
+              desc: desc
+            });
           
-          document.getElementById("NomeT").value = "";
-          document.getElementById("DataI").value = "";
-          document.getElementById("DataF").value = "";
-          document.getElementById("Desc").value = "";
+            document.getElementById("NomeT").value = "";
+            document.getElementById("DataI").value = "";
+            document.getElementById("DataF").value = "";
+            document.getElementById("Desc").value = "";
+            }
         });
 
         document.getElementById("Ex").addEventListener('click', function(event){
@@ -91,16 +91,16 @@ db.ref("Tarefas").on("value", (snapshot) => {
           if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
             alert("Selecione uma tarefa ou crie uma tarefa primeiro.");
             return;
-          }
+          }else{
+            db.ref("Tarefas/" + chave).remove().then(() => {
+              document.getElementById(`Tarefa${chave}`).remove();
+            });
 
-          db.ref("Tarefas/" + chave).remove().then(() => {
-            document.getElementById(`Tarefa${chave}`).remove();
-          });
-
-          document.getElementById("NomeT").value = "";
-          document.getElementById("DataI").value = "";
-          document.getElementById("DataF").value = "";
-          document.getElementById("Desc").value = "";
+            document.getElementById("NomeT").value = "";
+            document.getElementById("DataI").value = "";
+            document.getElementById("DataF").value = "";
+            document.getElementById("Desc").value = "";
+            }
         });
     });
   });

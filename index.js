@@ -67,10 +67,6 @@ db.ref("Tarefas").on("value", (snapshot) => {
           const dataF = document.getElementById("DataF").value;
           const desc = document.getElementById("Desc").value;
 
-          if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
-            alert("Selecione uma tarefa ou crie uma tarefa primeiro.");
-            return;
-          }
             db.ref("Tarefas/" + chave).update({
               nome: nome,
               dataI: dataI,
@@ -93,10 +89,6 @@ db.ref("Tarefas").on("value", (snapshot) => {
           const dataF = document.getElementById("DataF").value;
           const desc = document.getElementById("Desc").value;
 
-          if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
-            alert("Selecione uma tarefa ou crie uma tarefa primeiro.");
-            return;
-          }
             db.ref("Tarefas/" + chave).remove().then(() => {
               document.getElementById(`Tarefa${chave}`).remove();
             });

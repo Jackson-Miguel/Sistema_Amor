@@ -50,7 +50,6 @@ db.ref("Tarefas").on("value", (snapshot) => {
     btn.textContent = tarefa.nome;
     btn.id = `Tarefa${chave}`;
     document.getElementById("saida").appendChild(btn);
-
     Ntarefa++;
     
     btn.addEventListener('click', function(){

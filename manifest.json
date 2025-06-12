@@ -1,6 +1,9 @@
 {
+  "theme_color": "#9100bb",
+  "background_color": "#000000",
   "name": "Sistema Lista",
   "short_name": "SistemaList",
   "start_url": "/index.html",
-  "display": "standalone"
+  "display": "standalone",
+  "id": "Sistema Lista"
 }

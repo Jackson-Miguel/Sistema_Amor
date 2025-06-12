@@ -39,6 +39,7 @@ function sa(event) {
 }
 
 let Ntarefa = 1;
+let chaveSelecionada = null;
 db.ref("Tarefas").on("value", (snapshot) => {
   document.getElementById("saida").innerHTML = "";
   Ntarefa = 1;
@@ -58,47 +59,73 @@ db.ref("Tarefas").on("value", (snapshot) => {
         document.getElementById("DataF").value = tarefa.dataF;
         document.getElementById("Desc").value = tarefa.desc;
 
+        chaveSelecionada = chave;
 
-        document.getElementById("Mod").addEventListener('click', function(event){
-          event.preventDefault();
+    document.getElementById("Mod").addEventListener('click', function(event) {
+      event.preventDefault();
 
-          const nome = document.getElementById("NomeT").value;
-          const dataI = document.getElementById("DataI").value;
-          const dataF = document.getElementById("DataF").value;
-          const desc = document.getElementById("Desc").value;
+      if (!chaveSelecionada) {
+        alert("Nenhuma tarefa selecionada!");
+        return;
+      }
 
-            db.ref("Tarefas/" + chave).update({
-              nome: nome,
-              dataI: dataI,
-              dataF: dataF,
-              desc: desc
-            });
-          
-            document.getElementById("NomeT").value = "";
-            document.getElementById("DataI").value = "";
-            document.getElementById("DataF").value = "";
-            document.getElementById("Desc").value = "";
+      const nome = document.getElementById("NomeT").value;
+      const dataI = document.getElementById("DataI").value;
+      const dataF = document.getElementById("DataF").value;
+      const desc = document.getElementById("Desc").value;
+
+      if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
+        alert("Preencha todos os campos.");
+        return;
+      }
+
+      db.ref("Tarefas/" + chaveSelecionada).update({
+        nome,
+        dataI,
+        dataF,
+        desc
+      });
+
+      alert("Tarefa atualizada com sucesso!");
+    
+      document.getElementById("NomeT").value = "";
+      document.getElementById("DataI").value = "";
+      document.getElementById("DataF").value = "";
+      document.getElementById("Desc").value = "";
+
+      chaveSelecionada = null;
+    });
+
+
+    document.getElementById("Ex").addEventListener('click', function(event){
+      event.preventDefault();
+      if (!chaveSelecionada) {
+        alert("Nenhuma tarefa selecionada!");
+        return;
+      }
+
+      const nome = document.getElementById("NomeT").value;
+      const dataI = document.getElementById("DataI").value;
+      const dataF = document.getElementById("DataF").value;
+      const desc = document.getElementById("Desc").value;
+
+      if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
+        alert("Preencha todos os campos.");
+        return;
+      }
+  
+      db.ref("Tarefas/" + chave).remove().then(() => {
+        document.getElementById(`Tarefa${chave}`).remove();
+      });
+
+      alert("Tarefa excluida com sucesso!");
+
+      document.getElementById("NomeT").value = "";
+      document.getElementById("DataI").value = "";
+      document.getElementById("DataF").value = "";
+      document.getElementById("Desc").value = "";
             
-        });
-
-        document.getElementById("Ex").addEventListener('click', function(event){
-          event.preventDefault();
-          
-          const nome = document.getElementById("NomeT").value;
-          const dataI = document.getElementById("DataI").value;
-          const dataF = document.getElementById("DataF").value;
-          const desc = document.getElementById("Desc").value;
-
-            db.ref("Tarefas/" + chave).remove().then(() => {
-              document.getElementById(`Tarefa${chave}`).remove();
-            });
-
-            document.getElementById("NomeT").value = "";
-            document.getElementById("DataI").value = "";
-            document.getElementById("DataF").value = "";
-            document.getElementById("Desc").value = "";
-            
-        });
+    });
     });
   });
 });

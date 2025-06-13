@@ -32,12 +32,12 @@ function sa(event) {
         dataF: dataF.toISOString().split("T")[0],
         desc: desc
       });
+
       document.getElementById("NomeT").value = "";
       document.getElementById("DataI").value = "";
       document.getElementById("DataF").value = "";
       document.getElementById("Desc").value = "";
   }
-    return;
   }else{
     db.ref("Tarefas").push({
       nome: nome,

@@ -10,8 +10,11 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js').then(() => 
-            console.log('Service Worker registrado!'));
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log("SW registrado", reg))
+                .catch(err => console.error("SW falhou", err));
+            });
         }
     </script>
     <title>Gerenciador de tarefas</title>

@@ -21,6 +21,7 @@ button{
     width: 80px;
     border-radius: 5px;
     border-color: #F2CDAC;
+    cursor: pointer;
 }
 input{
     border-color: #F2CDAC;
@@ -53,7 +54,6 @@ hr{
     width: 340px;
     margin-top: -10px;
     justify-content: space-between;
-
 }
 #NomeT{
     width: 137px;

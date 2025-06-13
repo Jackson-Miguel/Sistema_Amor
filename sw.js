@@ -1,28 +1,26 @@
-const CACHE_NAME = "meu-app-cache-v1";
-const ASSETS = [
+const CACHE_NAME = "meu-app-v9";
+const FILES_TO_CACHE = [
   "/",
   "/index.html",
   "/index.css",
   "/index.js",
-  "https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js",
-  "https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"
+  "/manifest.json",
 ];
 
-// Instalando o service worker e adicionando arquivos ao cache
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS);
+      return cache.addAll(FILES_TO_CACHE);
     })
   );
+  self.skipWaiting(); 
 });
 
-// Ativando o service worker e limpando caches antigos
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
+    caches.keys().then((keyList) =>
       Promise.all(
-        keys.map((key) => {
+        keyList.map((key) => {
           if (key !== CACHE_NAME) {
             return caches.delete(key);
           }
@@ -30,12 +28,13 @@ self.addEventListener("activate", (event) => {
       )
     )
   );
+  self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request);
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
     })
   );
 });

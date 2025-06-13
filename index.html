@@ -12,7 +12,7 @@
             navigator.serviceWorker.register('/sw.js').then(() => 
             console.log('Service Worker registrado!'));
         }
-</script>
+    </script>
     <title>Gerenciador de tarefas</title>
 </head>
 <body>
@@ -29,9 +29,9 @@
         </div><br><hr><br>
         <div id="btn">
             <button type="submit" onclick="sa(event)" id="Salvar">Salvar</button>
-            <button type="reset">Limpar</button>
-            <button id="Ex">Excluir</button>
-            <button id="Mod">Atualizar</button>
+            <button type="reset" onclick="limp(event)">Limpar</button>
+            <button id="Ex" onclick="ex(event)">Excluir</button>
+            <button id="Mod" onclick="atu(event)">Atualizar</button>
         </div>
         <br>
             <div id="saida"></div>

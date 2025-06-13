@@ -5,6 +5,8 @@
   "short_name": "SistemaList",
   "start_url": "/index.html",
   "display": "standalone",
+  "id": "Sistema",
+  "description": "Algo para o meu amor",
   "icons": [
     {
       "src": "img/img.png",

@@ -38,7 +38,19 @@ function sa(event) {
       document.getElementById("Desc").value = "";
   }
     return;
-  };
+  }else{
+    db.ref("Tarefas").push({
+      nome: nome,
+      dataI: dataI.toISOString().split("T")[0], // salva no formato YYYY-MM-DD
+      dataF: dataF.toISOString().split("T")[0],
+      desc: desc
+      });
+
+    document.getElementById("NomeT").value = "";
+    document.getElementById("DataI").value = "";
+    document.getElementById("DataF").value = "";
+    document.getElementById("Desc").value = "";
+  }
 }
 
 let Ntarefa = 1;

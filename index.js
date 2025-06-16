@@ -30,7 +30,8 @@ function sa(event) {
         nome: nome,
         dataI: dataI.toISOString().split("T")[0], // salva no formato YYYY-MM-DD
         dataF: dataF.toISOString().split("T")[0],
-        desc: desc
+        desc: desc,
+        concu: false
       });
 
       document.getElementById("NomeT").value = "";
@@ -43,7 +44,8 @@ function sa(event) {
       nome: nome,
       dataI: dataI.toISOString().split("T")[0], // salva no formato YYYY-MM-DD
       dataF: dataF.toISOString().split("T")[0],
-      desc: desc
+      desc: desc,
+      concu: false
       });
 
     document.getElementById("NomeT").value = "";
@@ -55,20 +57,29 @@ function sa(event) {
 
 let Ntarefa = 1;
 let chaveSelecionada = null;
+
 db.ref("Tarefas").on("value", (snapshot) => {
   document.getElementById("saida").innerHTML = "";
+  document.getElementById("btns").innerHTML = "";
   Ntarefa = 1;
-  
+
   snapshot.forEach((child) => {
     const chave = child.key;
     const tarefa = child.val();
+
     const btn = document.createElement("button");
     btn.textContent = tarefa.nome;
-    btn.id = `Tarefa${chave}`;
-    document.getElementById("saida").appendChild(btn);
+    btn.id = `Tarefa-${chave}`;
+
+    if (tarefa.concu === true) {
+      document.getElementById("btns").appendChild(btn);
+    } else {
+      document.getElementById("saida").appendChild(btn);
+    }
+
     Ntarefa++;
-    
-    btn.addEventListener('click', function(){
+
+    btn.addEventListener('click', function () {
       document.getElementById("NomeT").value = tarefa.nome;
       document.getElementById("DataI").value = tarefa.dataI;
       document.getElementById("DataF").value = tarefa.dataF;
@@ -113,7 +124,7 @@ function atu(event){
   chaveSelecionada = null;
 }
 
-function conc(event){
+function conc(event) {
   event.preventDefault();
 
   const nome = document.getElementById("NomeT").value;
@@ -121,22 +132,36 @@ function conc(event){
   const dataF = document.getElementById("DataF").value;
   const desc = document.getElementById("Desc").value;
 
-  if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
-    alert("Selecione alguma tarefa ou crie uma tarefa primeiro.");
+  if (!chaveSelecionada) {
+    alert("Nenhuma tarefa selecionada.");
     return;
   }
 
-  document.getElementById("btns").appendChild(btn.id == `Tarefa${chave}`);
+  if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
+    alert("Campos vazios. Selecione uma tarefa ou preencha os dados.");
+    return;
+  }
 
+  db.ref("Tarefas/" + chaveSelecionada).update({
+    concu: true
+  }).then(() => {
+    const btn = document.getElementById(`Tarefa-${chaveSelecionada}`);
+    if (btn) {
+      document.getElementById("btns").appendChild(btn);
+    }
 
-  alert("Tarefa concluída!");
+    alert("Tarefa marcada como concluída!");
+  }).catch((error) => {
+    console.error("Erro ao atualizar tarefa:", error);
+  });
 
+  // Limpa os campos e reseta
   document.getElementById("NomeT").value = "";
   document.getElementById("DataI").value = "";
   document.getElementById("DataF").value = "";
   document.getElementById("Desc").value = "";
   document.getElementById("Salvar").disabled = false;
-  document.getElementById("Salvar").style.cursor = "pointer";          
+  document.getElementById("Salvar").style.cursor = "pointer";
 
   chaveSelecionada = null;
 }

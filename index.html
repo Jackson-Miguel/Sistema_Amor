@@ -9,7 +9,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     
-    <script>
+   <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
@@ -35,12 +35,19 @@
         <div id="btn">
             <button type="submit" onclick="sa(event)" id="Salvar">Salvar</button>
             <button type="reset" onclick="limp(event)">Limpar</button>
-            <button id="Ex" onclick="ex(event)">Excluir</button>
+            <button id="Ex" onclick="conc(event)">Concluir</button>
             <button id="Mod" onclick="atu(event)">Atualizar</button>
         </div>
         <br>
             <div id="saida"></div>
+    </div><br>
+    <div id="con" class="con">
+        <h1>Tarefas concluídas</h1>
+        <div id="btns">
+            <button>sexo</button>
+        </div>
     </div>
+
     <script src="index.js" type="text/javascript"></script>
 </body>
 </html>

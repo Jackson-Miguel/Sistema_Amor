@@ -107,11 +107,13 @@ function atu(event){
   document.getElementById("DataI").value = "";
   document.getElementById("DataF").value = "";
   document.getElementById("Desc").value = "";
+  document.getElementById("Salvar").disabled = false;
+  document.getElementById("Salvar").style.cursor = "pointer";
 
   chaveSelecionada = null;
 }
 
-function ex(event){
+function conc(event){
   event.preventDefault();
 
   const nome = document.getElementById("NomeT").value;
@@ -123,18 +125,19 @@ function ex(event){
     alert("Selecione alguma tarefa ou crie uma tarefa primeiro.");
     return;
   }
-  
-  db.ref("Tarefas/" + chaveSelecionada).remove().then(() => {
-    document.getElementById(`Tarefa${chaveSelecionada}`).remove();
-  });
 
-  alert("Tarefa excluida com sucesso!");
+  document.getElementById("btns").appendChild(btn.id == `Tarefa${chave}`);
+
+
+  alert("Tarefa concluída!");
 
   document.getElementById("NomeT").value = "";
   document.getElementById("DataI").value = "";
   document.getElementById("DataF").value = "";
   document.getElementById("Desc").value = "";
-            
+  document.getElementById("Salvar").disabled = false;
+  document.getElementById("Salvar").style.cursor = "pointer";          
+
   chaveSelecionada = null;
 }
 

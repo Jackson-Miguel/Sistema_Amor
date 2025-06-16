@@ -43,16 +43,28 @@ hr{
 .base{
     border: 1px solid;
     width: 350px;
-    background-color: #4C4A59;
     color: #F2CDAC;
     justify-self: center;
     justify-items: center;
-    height: 290px;
+}
+#con{
+    border: 1px solid;
+    width: 350px;
+    color: #F2CDAC;
+    justify-self: center;
+    justify-items: center;
 }
 #btn{
     display:flex;
     width: 340px;
     margin-top: -10px;
+    justify-content: space-between;
+}
+#btns{
+    display:flex;
+    width: 340px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     justify-content: space-between;
 }
 #NomeT{
@@ -66,4 +78,5 @@ hr{
     width: 340px;
     display: flex;
     gap: 6px;
+    margin-bottom: 10px;
 }

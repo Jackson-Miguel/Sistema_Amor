@@ -1,6 +1,6 @@
 {
   "name": "Sistema Lista",
-  "short_name": "SistemaLista",
+  "short_name": "SistemaList",
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#9100bb",

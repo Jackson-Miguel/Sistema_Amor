@@ -6,7 +6,7 @@ const firebaseConfig = {
   storageBucket: "sistema-5e7d1.firebasestorage.app",
   messagingSenderId: "822894926025",
   appId: "1:822894926025:web:567b92b5453f7b71c11518",
-  measurementId: "G-HSVY15L507"
+  measurementId: "G-HSVY15L507",
 };
 
 const app = firebase.initializeApp(firebaseConfig);
@@ -20,7 +20,12 @@ function sa(event) {
   const dataF = new Date(document.getElementById("DataF").value);
   const desc = document.getElementById("Desc").value;
 
-  if (nome.trim() === "" || dataI === "" || dataF === "" || desc.trim() === "") {
+  if (
+    nome.trim() === "" ||
+    dataI === "" ||
+    dataF === "" ||
+    desc.trim() === ""
+  ) {
     alert("Preencha todos os campos.");
     return;
   }
@@ -30,21 +35,21 @@ function sa(event) {
         nome: nome,
         dataI: dataI.toISOString().split("T")[0], // salva no formato YYYY-MM-DD
         dataF: dataF.toISOString().split("T")[0],
-        desc: desc
+        desc: desc,
       });
 
       document.getElementById("NomeT").value = "";
       document.getElementById("DataI").value = "";
       document.getElementById("DataF").value = "";
       document.getElementById("Desc").value = "";
-  }
-  }else{
+    }
+  } else {
     db.ref("Tarefas").push({
       nome: nome,
       dataI: dataI.toISOString().split("T")[0], // salva no formato YYYY-MM-DD
       dataF: dataF.toISOString().split("T")[0],
-      desc: desc
-      });
+      desc: desc,
+    });
 
     document.getElementById("NomeT").value = "";
     document.getElementById("DataI").value = "";
@@ -58,7 +63,7 @@ let chaveSelecionada = null;
 db.ref("Tarefas").on("value", (snapshot) => {
   document.getElementById("saida").innerHTML = "";
   Ntarefa = 1;
-  
+
   snapshot.forEach((child) => {
     const chave = child.key;
     const tarefa = child.val();
@@ -67,8 +72,8 @@ db.ref("Tarefas").on("value", (snapshot) => {
     btn.id = `Tarefa${chave}`;
     document.getElementById("saida").appendChild(btn);
     Ntarefa++;
-    
-    btn.addEventListener('click', function(){
+
+    btn.addEventListener("click", function () {
       document.getElementById("NomeT").value = tarefa.nome;
       document.getElementById("DataI").value = tarefa.dataI;
       document.getElementById("DataF").value = tarefa.dataF;
@@ -81,7 +86,7 @@ db.ref("Tarefas").on("value", (snapshot) => {
   });
 });
 
-function atu(event){
+function atu(event) {
   event.preventDefault();
 
   const nome = document.getElementById("NomeT").value;
@@ -89,7 +94,12 @@ function atu(event){
   const dataF = document.getElementById("DataF").value;
   const desc = document.getElementById("Desc").value;
 
-  if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
+  if (
+    nome.trim() === "" ||
+    dataI.trim() === "" ||
+    dataF.trim() === "" ||
+    desc.trim() === ""
+  ) {
     alert("Selecione alguma tarefa ou crie uma tarefa primeiro.");
     return;
   }
@@ -98,11 +108,11 @@ function atu(event){
     nome,
     dataI,
     dataF,
-    desc
+    desc,
   });
 
   alert("Tarefa atualizada com sucesso!");
-   
+
   document.getElementById("NomeT").value = "";
   document.getElementById("DataI").value = "";
   document.getElementById("DataF").value = "";
@@ -113,7 +123,7 @@ function atu(event){
   chaveSelecionada = null;
 }
 
-function conc(event){
+function conc(event) {
   event.preventDefault();
 
   const nome = document.getElementById("NomeT").value;
@@ -121,13 +131,17 @@ function conc(event){
   const dataF = document.getElementById("DataF").value;
   const desc = document.getElementById("Desc").value;
 
-  if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
+  if (
+    nome.trim() === "" ||
+    dataI.trim() === "" ||
+    dataF.trim() === "" ||
+    desc.trim() === ""
+  ) {
     alert("Selecione alguma tarefa ou crie uma tarefa primeiro.");
     return;
   }
 
-  document.getElementById("btns").appendChild(btn.id == `Tarefa${chave}`);
-
+  document.getElementById("btns").innerHTML += btn;
 
   alert("Tarefa concluída!");
 
@@ -136,12 +150,12 @@ function conc(event){
   document.getElementById("DataF").value = "";
   document.getElementById("Desc").value = "";
   document.getElementById("Salvar").disabled = false;
-  document.getElementById("Salvar").style.cursor = "pointer";          
+  document.getElementById("Salvar").style.cursor = "pointer";
 
   chaveSelecionada = null;
 }
 
-function limp(event){
+function limp(event) {
   event.preventDefault();
 
   const nome = document.getElementById("NomeT").value;
@@ -149,7 +163,12 @@ function limp(event){
   const dataF = document.getElementById("DataF").value;
   const desc = document.getElementById("Desc").value;
 
-  if (nome.trim() === "" || dataI.trim() === "" || dataF.trim() === "" || desc.trim() === "") {
+  if (
+    nome.trim() === "" ||
+    dataI.trim() === "" ||
+    dataF.trim() === "" ||
+    desc.trim() === ""
+  ) {
     alert("Todos os campos estão vazios.");
     return;
   }

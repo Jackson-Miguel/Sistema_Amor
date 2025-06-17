@@ -173,10 +173,6 @@ function del(event){
     return;
   }
 
-  const nome = document.getElementById("NomeT").value;
-  const dataI = document.getElementById("DataI").value;
-  const dataF = document.getElementById("DataF").value;
-  const desc = document.getElementById("Desc").value;
 
 
   db.ref("Tarefas/" + chaveSelecionada).remove().then(() => {

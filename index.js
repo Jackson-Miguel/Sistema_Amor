@@ -155,7 +155,6 @@ function conc(event) {
     console.error("Erro ao atualizar tarefa:", error);
   });
 
-  // Limpa os campos e reseta
   document.getElementById("NomeT").value = "";
   document.getElementById("DataI").value = "";
   document.getElementById("DataF").value = "";
@@ -164,6 +163,40 @@ function conc(event) {
   document.getElementById("Salvar").style.cursor = "pointer";
 
   chaveSelecionada = null;
+}
+
+function del(event){
+  event.preventDefault();
+
+  if (!chaveSelecionada) {
+    alert("Nenhuma tarefa selecionada.");
+    return;
+  }
+
+  const nome = document.getElementById("NomeT").value;
+  const dataI = document.getElementById("DataI").value;
+  const dataF = document.getElementById("DataF").value;
+  const desc = document.getElementById("Desc").value;
+
+
+  db.ref("Tarefas/" + chaveSelecionada).remove().then(() => {
+    alert("Tarefa excluída com sucesso!");
+
+    document.getElementById(`Tarefa${chaveSelecionada}`).remove();
+
+
+    document.getElementById("NomeT").value = "";
+    document.getElementById("DataI").value = "";
+    document.getElementById("DataF").value = "";
+    document.getElementById("Desc").value = "";
+
+    document.getElementById("Salvar").disabled = false;
+    document.getElementById("Salvar").style.cursor = "pointer";
+
+    chaveSelecionada = null;
+  }).catch((error) => {
+    console.error("Erro ao excluir tarefa:", error);
+  });
 }
 
 function limp(event){

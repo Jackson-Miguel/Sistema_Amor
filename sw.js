@@ -1,4 +1,4 @@
-const CACHE_NAME = "meu-app-5.0.9";
+const CACHE_NAME = "meu-app-5.1.9";
 const FILES_TO_CACHE = [
   "/",
   "/index.html",
